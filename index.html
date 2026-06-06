@@ -164,6 +164,24 @@
       border: 4px solid #1c2b4a;
     }
 
+    .band-photo {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: 4px solid #1c2b4a;
+      object-position: center 25%;
+    }
+
+    .band-gif-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: 4px solid #1c2b4a;
+      object-position: center;
+    }
+
     .video-grid {
       display: flex;
       justify-content: center;
@@ -332,6 +350,87 @@
       display: none;
     }
 
+    /* ── Mobile Responsive ── */
+    @media (max-width: 768px) {
+      .bio-row {
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .bio-row .inner-box.has-body {
+        flex: none;
+        min-width: auto;
+      }
+
+      .bio-row .band-gif-wrap {
+        flex: none;
+        min-width: auto;
+        max-height: none;
+        overflow: hidden;
+      }
+
+      .band-gif {
+        max-height: 320px;
+        height: auto;
+      }
+
+      .band-photo {
+        max-height: 500px;
+        height: auto;
+        object-position: center 25%;
+      }
+
+      .band-gif-image {
+        max-height: 320px;
+        height: auto;
+        object-position: center;
+      }
+
+      .center {
+        padding: 10px 16px 36px;
+      }
+
+      .outer-frame {
+        max-width: 100%;
+        padding: 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        font-size: clamp(16px, 2.4vw, 28px);
+        padding: 12px 10px 10px;
+        gap: clamp(6px, 1.5vw, 20px);
+      }
+
+      .outer-frame {
+        padding: 12px;
+        gap: 10px;
+      }
+
+      .inner-box {
+        height: clamp(45px, 6vh, 70px);
+        padding: 10px 14px;
+      }
+
+      .inner-box-title {
+        font-size: clamp(11px, 1.3vw, 16px);
+      }
+
+      .inner-box-body {
+        font-size: clamp(10px, 1vw, 13px);
+      }
+
+      .formkit-input {
+        width: 100%;
+        font-size: clamp(10px, 1vw, 13px);
+      }
+
+      .formkit-submit {
+        font-size: clamp(12px, 1.3vw, 16px);
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -379,7 +478,7 @@
           </div>
           </div>
           <div class="band-gif-wrap">
-            <img class="band-gif" src="pictures/RyanDave1.jpg" alt="Good Cop Rad Cop">
+            <img class="band-photo" src="pictures/RyanDave1.jpg" alt="Good Cop Rad Cop">
           </div>
         </div>
         <div class="inner-box has-body">
@@ -404,7 +503,7 @@
         </div>
         <div class="bio-row">
           <div class="band-gif-wrap">
-            <img class="band-gif" src="pictures/GCRC1.gif" alt="Good Cop Rad Cop">
+            <img class="band-gif-image" src="pictures/GCRC1.gif" alt="Good Cop Rad Cop">
           </div>
           <div class="inner-box has-body" style="height: auto;">
             <span class="inner-box-title">UPCOMING SHOWS</span>
