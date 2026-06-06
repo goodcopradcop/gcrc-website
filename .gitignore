@@ -1,0 +1,4 @@
+archive/*
+*.md
+.claude/*
+.claude

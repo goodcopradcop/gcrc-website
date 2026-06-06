@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GOOD COP / RAD COP</title>
+  <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      overflow: auto;
+    }
+
+    body {
+      background: #FFC107;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Hidden SVG defs */
+    .svg-defs {
+      position: absolute;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+    }
+
+    /* ── Title ── */
+    header {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(10px, 2vw, 28px);
+      padding: 18px 20px 14px;
+      font-family: 'Arial Black', Arial, sans-serif;
+      font-size: clamp(18px, 2.8vw, 34px);
+      font-weight: 900;
+      letter-spacing: 0.28em;
+      color: #111;
+    }
+
+
+
+    /* ── Three-column layout ── */
+    .layout {
+      flex: 1;
+      display: flex;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+
+
+
+    /* ── Center area ── */
+    .center {
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 10px 30px 36px;
+      min-width: 0;
+      min-height: 0;
+      overflow: visible;
+    }
+
+    /* ── Outer wobbly frame ── */
+    .outer-frame {
+      position: relative;
+      width: 100%;
+      max-width: 860px;
+      height: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      overflow: visible;
+    }
+
+    .outer-frame::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 10px solid #1c2b4a;
+      pointer-events: none;
+      filter: url(#wobbly);
+    }
+
+    /* ── Inner boxes ── */
+    .inner-box {
+      position: relative;
+      height: clamp(50px, 8vh, 80px);
+      display: flex;
+      align-items: flex-start;
+      padding: 14px 18px;
+      flex-shrink: 0;
+    }
+
+    .inner-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 5px solid #1c2b4a;
+      pointer-events: none;
+      filter: url(#wobbly);
+    }
+
+    .inner-box-title {
+      font-family: 'Arial Black', Arial, sans-serif;
+      font-size: clamp(13px, 1.5vw, 20px);
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      color: #1c2b4a;
+      text-transform: uppercase;
+      user-select: none;
+      flex-shrink: 0;
+      align-self: center;
+    }
+
+    .inner-box-body {
+      font-family: Arial, sans-serif;
+      font-size: clamp(11px, 1.1vw, 15px);
+      line-height: 1.55;
+      color: #1c2b4a;
+      margin-top: 8px;
+      overflow-y: auto;
+    }
+
+    .inner-box.has-body {
+      flex-direction: column;
+      align-items: flex-start;
+      height: auto;
+      flex-shrink: 0;
+      overflow: visible;
+    }
+
+    .bio-row {
+      display: flex;
+      gap: 14px;
+      align-items: stretch;
+      flex-shrink: 0;
+    }
+
+    .bio-row .inner-box.has-body {
+      flex: 1 1 0;
+      min-width: 0;
+      height: auto;
+    }
+
+    .bio-row .band-gif-wrap {
+      flex: 1 1 0;
+      min-width: 0;
+      display: flex;
+      align-items: stretch;
+    }
+
+    .band-gif {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: 4px solid #1c2b4a;
+    }
+
+    .video-grid {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .video-thumb {
+      position: relative;
+      display: block;
+      width: auto;
+      max-width: 100%;
+      text-decoration: none;
+    }
+
+    .video-thumb img {
+      display: block;
+      height: 100%;
+      max-height: clamp(140px, 24vh, 450px);
+      width: auto;
+      max-width: 100%;
+      border: 3px solid #1c2b4a;
+    }
+
+    .video-thumb .play-btn {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(28px, 4vw, 44px);
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+      pointer-events: none;
+    }
+
+    .site-title {
+      font-family: Arial, sans-serif;
+      font-size: clamp(40px, 10vw, 40px);
+      line-height: 1;
+      color: #1c2b4a;
+      text-shadow:
+        4px 4px 0 var(--pink),
+        8px 8px 0 var(--blue),
+        -2px -2px 0 var(--green);
+      animation: titleWobble 3s ease-in-out infinite;
+      letter-spacing: -2px;
+    }
+
+    @keyframes titleWobble {
+      0%, 100% { transform: rotate(-0.5deg); }
+      50% { transform: rotate(0.5deg); }
+    }
+
+    /* ── Shows ── */
+    .show-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 4px 0;
+      font-family: Arial, sans-serif;
+      font-size: clamp(11px, 1.1vw, 15px);
+      color: #1c2b4a;
+    }
+
+    .show-date {
+      font-weight: 700;
+      flex-shrink: 0;
+      min-width: 90px;
+    }
+
+    .show-venue {
+      flex: 1;
+    }
+
+    .show-row a, .show-row span {
+      flex-shrink: 0;
+      font-weight: 700;
+      color: #1c2b4a;
+    }
+
+    .show-row a:hover {
+      text-decoration: underline;
+    }
+
+    /* ── Socials ── */
+    #socials-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      padding-top: 2px;
+    }
+
+    #socials-list a {
+      font-family: 'Arial Black', Arial, sans-serif;
+      font-size: clamp(12px, 1.2vw, 16px);
+      font-weight: 900;
+      color: #1c2b4a;
+      text-decoration: none;
+      letter-spacing: 0.08em;
+    }
+
+    #socials-list a:hover {
+      text-decoration: underline;
+    }
+
+    /* ── Kit Form Styles ── */
+    .inner-box-body:has(form) {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .seva-form.formkit-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .seva-fields.formkit-fields {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .formkit-field {
+      width: auto;
+    }
+
+    .formkit-input {
+      background: transparent;
+      border: 2px solid #1c2b4a;
+      color: #1c2b4a;
+      font-family: Arial, sans-serif;
+      font-size: clamp(11px, 1.1vw, 15px);
+      font-weight: 400;
+      padding: 6px 10px;
+      width: 250px;
+      border-radius: 0;
+    }
+
+    .formkit-input::placeholder {
+      color: #1c2b4a;
+      opacity: 0.7;
+    }
+
+    .formkit-submit {
+      background: #1c2b4a;
+      color: #FFC107;
+      font-family: 'Arial Black', Arial, sans-serif;
+      font-size: clamp(13px, 1.5vw, 20px);
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border: none;
+      padding: 8px 20px;
+      cursor: pointer;
+      border-radius: 0;
+    }
+
+    .formkit-powered-by-convertkit-container {
+      display: none;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- SVG filter: hand-drawn wobbly border -->
+  <svg class="svg-defs" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <filter id="wobbly" x="-10%" y="-10%" width="120%" height="120%">
+        <feTurbulence
+          id="wobbleTurb"
+          type="fractalNoise"
+          baseFrequency="0.023"
+          numOctaves="3"
+          seed="5"
+          result="noise"
+        />
+        <feDisplacementMap
+          in="SourceGraphic"
+          in2="noise"
+          scale="8"
+          xChannelSelector="R"
+          yChannelSelector="G"
+        />
+      </filter>
+    </defs>
+  </svg>
+
+  <header class="site-title">GOOD COP / RAD COP</header >
+
+  <div class="layout">
+
+    <!-- Center: outer frame with 2 inner boxes -->
+    <div class="center">
+      <div class="outer-frame">
+        <div class="bio-row">
+          <div class="inner-box has-body">
+          <span class="inner-box-title">ABOUT</span>
+          <div class="inner-box-body">
+            <p>Good Cop/Rad Cop is a high-energy musical comedy duo from Atlanta, Georgia. Armed with a guitar, a kazoo, and a robot that does crowdwork, Dave Hannah and Ryan Darling sing, scream, and harmonize their way into every crowd with absurd, poignant songs rooted in punk and country.</p>
+            <br>
+            <p>They made their TV debut on Netflix's Star Search, have performed at Netflix is a Joke and Moontower Comedy Festivals, toured with Dropkick Murphys, and shared bills with Bobcat Goldthwait, Roy Wood Jr., and more. Equal parts summer camp and barn fire in every show.</p>
+            <br>
+            <div class="inner-box-body" id="socials-list"></div>
+
+          </div>
+          </div>
+          <div class="band-gif-wrap">
+            <img class="band-gif" src="pictures/RyanDave1.jpg" alt="Good Cop Rad Cop">
+          </div>
+        </div>
+        <div class="inner-box has-body">
+          <span class="inner-box-title">JOIN OUR EMAIL LIST</span>
+          <div class="inner-box-body">
+            <p>Drop your email below. Pick your city and we'll let you know when we're coming to you.</p>
+            <form action="https://app.kit.com/forms/9481645/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="9481645" data-uid="a75709b90c" data-format="inline" data-version="5">
+              <div class="seva-fields formkit-fields">
+                <div class="formkit-field">
+                  <input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="Email Address" required="" type="email">
+                </div>
+                <div class="formkit-field">
+                  <input class="formkit-input" aria-label="City" name="fields[city]" required="" placeholder="City" type="text">
+                </div>
+                <button type="submit" class="formkit-submit">Subscribe</button>
+              </div>
+              <div class="formkit-powered-by-convertkit-container">
+                <a href="https://kit.com/features/forms?utm_campaign=poweredby&utm_content=form&utm_medium=referral&utm_source=dynamic" class="formkit-powered-by-convertkit" data-variant="dark" target="_blank" rel="nofollow noopener">Built with Kit</a>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="bio-row">
+          <div class="band-gif-wrap">
+            <img class="band-gif" src="pictures/GCRC1.gif" alt="Good Cop Rad Cop">
+          </div>
+          <div class="inner-box has-body" style="height: auto;">
+            <span class="inner-box-title">UPCOMING SHOWS</span>
+            <div class="inner-box-body" id="shows-list"></div>
+          </div>
+
+        </div>
+        <div class="inner-box has-body">
+          <span class="inner-box-title">WATCH OUR SPECIAL</span>
+          <div class="inner-box-body" style="flex: 1; overflow: hidden; width: 100%;">
+            <div class="video-grid">
+              <a class="video-thumb" href="https://youtu.be/BdagTAnfUA0?si=9lvoUY2pRkzugUy8" target="_blank" rel="noopener noreferrer">
+                <img src="https://img.youtube.com/vi/BdagTAnfUA0/hqdefault.jpg" alt="Watch on YouTube">
+                <span class="play-btn">&#9654;</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="inner-box has-body" style="height: auto;">
+          <span class="inner-box-title">SOCIALS</span>
+          <div class="inner-box-body" id="socials-list"></div>
+        </div> -->
+      </div>
+    </div>
+
+
+  </div>
+
+  <script>
+    fetch('config.json')
+      .then(r => r.json())
+      .then(data => {
+        renderSocials(data.socials);
+        renderShows(data.shows);
+      });
+
+    function renderSocials(socials) {
+      const container = document.getElementById('socials-list');
+      container.innerHTML = socials.map(s =>
+        `<a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.name}</a>`
+      ).join('');
+    }
+
+    function renderShows(shows) {
+      const container = document.getElementById('shows-list');
+      if (!shows.length) {
+        container.innerHTML = '<p>No upcoming shows — check back soon.</p>';
+        return;
+      }
+      container.innerHTML = shows.map(s => {
+        const venue = s.ticketUrl
+          ? `<a class="show-venue" href="${s.ticketUrl}" target="_blank" rel="noopener noreferrer">${s.venue} — ${s.city}</a>`
+          : `<span class="show-venue">${s.venue} — ${s.city}</span>`;
+        return `<div class="show-row">
+          <span class="show-date">${s.date}</span>
+          ${venue}
+        </div>`;
+      }).join('');
+    }
+  </script>
+
+  <script>
+    // Smoothly evolve baseFrequency so the wobbly border slowly undulates
+    (function () {
+      const turb = document.getElementById('wobbleTurb');
+      let t = 0;
+      function tick() {
+        t += 0.005;
+        turb.setAttribute('baseFrequency', (0.020 + Math.sin(t) * 0.008).toFixed(4));
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    })();
+  </script>
+
+</body>
+</html>

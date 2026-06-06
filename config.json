@@ -1,0 +1,47 @@
+{
+  "socials": [
+    { "name": "Instagram", "url": "https://instagram.com/goodcop_radcop" },
+    { "name": "TikTok",    "url": "https://tiktok.com/@goodcopradcop" },
+    { "name": "YouTube",   "url": "https://youtube.com/@goodcopradcop" }
+  ],
+  "shows": [
+    {
+      "date": "May 24, 2026",
+      "venue": "FRESH PRODUCE",
+      "city": "Atlanta, GA"
+    },
+    {
+      "date": "June 13, 2026",
+      "venue": "THE GREEK THEATER* (w/ Felipe Esparza)",
+      "city": "Los Angeles, CA",
+      "ticketUrl": "https://felipesworld.com/?srsltid=AfmBOopIBi_t2YnpJqsT4fCLP10To-DnOF9OrGKW8nA61vPNio4s3uRN"
+    },
+    {
+      "date": "July 10, 2026",
+      "venue": "TBD",
+      "city": "Indianapolis, IN"
+    },
+
+    {
+      "date": "July 16, 2026",
+      "venue": "THE LAB AT ZANIES",
+      "city": "Nashville, TN",
+      "ticketUrl": "https://www.etix.com/ticket/p/55949256/good-coprad-cop-nashville-the-lab-at-zanies"
+    },
+    {
+      "date": "July 17, 2026",
+      "venue": "TBD",
+      "city": "Chattanooga, TN"
+    },   
+    {
+      "date": "July 18, 2026",
+      "venue": "CENTRAL CINEMA",
+      "city": "Knoxville, TN"
+    }
+
+  ]
+}
+
+
+
+
