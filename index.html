@@ -299,15 +299,15 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 12px;
-      margin-top: 12px;
+      gap: 8px;
+      margin-top: 6px;
     }
 
     .seva-fields.formkit-fields {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 12px;
+      gap: 8px;
       width: 100%;
     }
 
@@ -322,14 +322,28 @@
       font-family: Arial, sans-serif;
       font-size: clamp(11px, 1.1vw, 15px);
       font-weight: 400;
-      padding: 6px 10px;
+      padding: 8px 12px;
       width: 250px;
       border-radius: 0;
+      transition: all 0.2s ease;
+      box-sizing: border-box;
     }
 
     .formkit-input::placeholder {
       color: #1c2b4a;
-      opacity: 0.7;
+      opacity: 0.6;
+    }
+
+    .formkit-input:focus {
+      outline: none;
+      border-color: #1c2b4a;
+      box-shadow: 0 0 0 3px rgba(28, 43, 74, 0.15);
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .formkit-input:hover {
+      border-color: #1c2b4a;
+      background: rgba(255, 255, 255, 0.1);
     }
 
     .formkit-submit {
@@ -340,10 +354,22 @@
       font-weight: 900;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      border: none;
-      padding: 8px 20px;
+      border: 2px solid #1c2b4a;
+      padding: 10px 22px;
       cursor: pointer;
       border-radius: 0;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .formkit-submit:hover {
+      background: #FFC107;
+      color: #1c2b4a;
+      transform: scale(1.03);
+    }
+
+    .formkit-submit:active {
+      transform: scale(0.98);
     }
 
     .formkit-powered-by-convertkit-container {
@@ -423,11 +449,22 @@
 
       .formkit-input {
         width: 100%;
-        font-size: clamp(10px, 1vw, 13px);
+        font-size: clamp(14px, 1vw, 15px);
+        padding: 12px;
       }
 
       .formkit-submit {
-        font-size: clamp(12px, 1.3vw, 16px);
+        font-size: clamp(13px, 1.3vw, 16px);
+        padding: 12px 18px;
+        width: 100%;
+      }
+
+      .seva-fields.formkit-fields {
+        width: 100%;
+      }
+
+      .formkit-field {
+        width: 100%;
       }
     }
 
@@ -484,22 +521,18 @@
         <div class="inner-box has-body">
           <span class="inner-box-title">JOIN OUR EMAIL LIST</span>
           <div class="inner-box-body">
-            <p>Drop your email below. Pick your city and we'll let you know when we're coming to you.</p>
-            <form action="https://app.kit.com/forms/9481645/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="9481645" data-uid="a75709b90c" data-format="inline" data-version="5">
+            <p>Drop your email and city below and we'll let you know when we're coming to you.</p>
+            <!-- <form action="https://app.kit.com/forms/9481645/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="9481645" data-uid="a75709b90c" data-format="inline" data-version="5">
               <div class="seva-fields formkit-fields">
                 <div class="formkit-field">
                   <input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="Email Address" required="" type="email">
-                </div>
-                <div class="formkit-field">
+                </div> -->
+                <!-- <div class="formkit-field">
                   <input class="formkit-input" aria-label="City" name="fields[city]" required="" placeholder="City" type="text">
                 </div>
                 <button type="submit" class="formkit-submit">Subscribe</button>
-              </div>
-              <div class="formkit-powered-by-convertkit-container">
-                <a href="https://kit.com/features/forms?utm_campaign=poweredby&utm_content=form&utm_medium=referral&utm_source=dynamic" class="formkit-powered-by-convertkit" data-variant="dark" target="_blank" rel="nofollow noopener">Built with Kit</a>
-              </div>
-            </form>
-          </div>
+              </div> -->
+          <script async data-uid="a75709b90c" src="https://good-cop-rad-cop.kit.com/a75709b90c/index.js"></script>          </div>
         </div>
         <div class="bio-row">
           <div class="band-gif-wrap">
